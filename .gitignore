@@ -1,0 +1,23 @@
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+node_modules/
+frontend/node_modules/
+
+dist/
+frontend/dist/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Backend runtime data
+backend/data/chroma/
+backend/data/sqlite/
+backend/data/documents/
+
+# Local debug files
+backend/debug_test.py
