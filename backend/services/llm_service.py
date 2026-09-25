@@ -6,13 +6,15 @@ from typing import Dict, Any, List, Optional
 from core.config import OLLAMA_BASE_URL, OLLAMA_MODEL
 
 class LLMService:
+    NGROK_HEADERS = {"ngrok-skip-browser-warning": "true"}
+
     def __init__(self, base_url: str = OLLAMA_BASE_URL, model: str = OLLAMA_MODEL):
         self.base_url = base_url.rstrip("/")
         self.model = model
 
     def check_health(self) -> str:
         try:
-            res = requests.get(f"{self.base_url}/api/tags", timeout=2.0)
+            res = requests.get(f"{self.base_url}/api/tags", timeout=5.0, headers=self.NGROK_HEADERS)
             if res.status_code == 200:
                 return "healthy"
             return "degraded"
@@ -29,8 +31,8 @@ class LLMService:
             }
             if system_prompt:
                 payload["system"] = system_prompt
-                
-            res = requests.post(url, json=payload, timeout=8.0)
+
+            res = requests.post(url, json=payload, timeout=15.0, headers=self.NGROK_HEADERS)
             if res.status_code == 200:
                 data = res.json()
                 resp_text = data.get("response", "").strip()

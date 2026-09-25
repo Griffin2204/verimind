@@ -23,7 +23,7 @@ export const apiService = {
 
   async checkHealth() {
     try {
-      const res = await fetch(`${API_BASE_URL}/health`, { signal: AbortSignal.timeout(4000) });
+      const res = await fetch(`${API_BASE_URL}/health`, { signal: AbortSignal.timeout(20000) });
       if (!res.ok) {
         return { status: 'offline', error: `HTTP ${res.status}` };
       }
