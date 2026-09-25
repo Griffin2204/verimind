@@ -13,7 +13,7 @@ CHROMA_PATH = Path(os.getenv("CHROMA_PATH", str(BASE_DIR / "data" / "chroma")))
 DOCUMENTS_PATH = Path(os.getenv("DOCUMENTS_PATH", str(BASE_DIR / "data" / "documents")))
 SQLITE_DIR = Path(str(BASE_DIR / "data" / "sqlite"))
 
-EMBEDDING_MODEL_NAME = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+OLLAMA_EMBEDDING_MODEL = os.getenv("OLLAMA_EMBEDDING_MODEL", "nomic-embed-text")
 MAX_UPLOAD_MB = int(os.getenv("MAX_UPLOAD_MB", "20"))
 TOP_K = int(os.getenv("TOP_K", "5"))
 SIMILARITY_THRESHOLD = float(os.getenv("SIMILARITY_THRESHOLD", "0.45"))
